@@ -34,7 +34,7 @@ h2.subtitle {
     color: #776e65;
     font-size: 0.8em;
     margin: 0;
-    font-weight: 1;
+    font-weight: 300;
 }
 
 strong {
@@ -45,9 +45,10 @@ strong {
     margin: auto;
     padding: 10px;
     width: 500px;
-    height: 700px;
+    height: 690px;
     background-color: #baaea4;
     border-radius: 6px;
+    margin-bottom: 10%;
 }
 
 .display {
@@ -60,7 +61,7 @@ strong {
 
 .operational-content {
     margin-top: 10px;
-    height: 520px;
+    height: 510px;
 }
 
 .row {
@@ -77,12 +78,17 @@ button {
     font-weight: 900;
     border: none;
     border-radius: 6px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect */
+button:hover {
+    background-color: #d4cdbd;
 }
 
 button.other {
     background-color: #ede0c8;
 }
-
 .display {
     text-align: right;
     font-size: 1.7em;

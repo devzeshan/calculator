@@ -126,28 +126,40 @@ equalButton.addEventListener("click", function() {
             // Ensure consequentValues is properly defined and an array
             solutionValues = add(antecedentValues, consequentValues);
             displayContent.innerText = solutionValues.toString(); // Replace innerText with the sum
+            antecedentValues.splice(0, antecedentValues.length);
+            consequentValues.splice(0, consequentValues.length);
+            antecedentValues.push(solutionValues);
         }
     } else if (displayContent.innerText.includes('-')) {
         if (consequentValues && Array.isArray(consequentValues)) {
             // Ensure consequentValues is properly defined and an array
             solutionValues = subtract(antecedentValues, consequentValues);
             displayContent.innerText = solutionValues.toString(); // Replace innerText with the difference
+            antecedentValues.splice(0, antecedentValues.length);
+            consequentValues.splice(0, consequentValues.length);
+            antecedentValues.push(solutionValues);
         }
     } else if (displayContent.innerText.includes('*')) {
         if (consequentValues && Array.isArray(consequentValues)) {
             // Ensure consequentValues is properly defined and an array
             solutionValues = multiply(antecedentValues, consequentValues);
             displayContent.innerText = solutionValues.toString(); // Replace innerText with the product
+            antecedentValues.splice(0, antecedentValues.length);
+            consequentValues.splice(0, consequentValues.length);
+            antecedentValues.push(solutionValues);
         }
     } else if (displayContent.innerText.includes('/')) {
         if (consequentValues && Array.isArray(consequentValues)) {
             // Ensure consequentValues is properly defined and an array
             solutionValues = divide(antecedentValues, consequentValues);
             displayContent.innerText = solutionValues.toString(); // Replace innerText with the quotient
+            antecedentValues.splice(0, antecedentValues.length);
+            consequentValues.splice(0, consequentValues.length);
+            antecedentValues.push(solutionValues);
         }
     }
-    antecedentValues.splice(0, antecedentValues.length);
-    consequentValues.splice(0, consequentValues.length);
+    // antecedentValues.splice(0, antecedentValues.length);
+    // consequentValues.splice(0, consequentValues.length);
 });
 
 function checkElement(x) {
@@ -220,30 +232,30 @@ clearButton.addEventListener("click", function() {
 });
 
 deleteButton.addEventListener("click", function() {
+    // Check if the last character in the display content is an operator
+    let lastChar = displayContent.innerText.slice(-1);
+    if (lastChar === '+' || lastChar === '-' || lastChar === '*' || lastChar === '/') {
+        // If the last character is an operator, remove it from display content and return
+        displayContent.innerText = displayContent.innerText.slice(0, -1);
+        return;
+    }
+    
     // Delete the last character from display content
     displayContent.innerText = displayContent.innerText.slice(0, -1);
     
-    if (antecedentValues.length > 0) {
-        for (let i = 0; i < antecedentValues.length; i++) {
-            // Convert the number to a string
-            let str = antecedentValues[i].toString();
-            
-            // Remove the last character from the string
-            let newStr = str.slice(0, -1);
-            
-            // Convert the modified string back to a number
-            antecedentValues[i] = parseInt(newStr);
+    // Check if there are values in consequentValues or antecedentValues
+    if (consequentValues.length > 0) {
+        let lastValue = consequentValues.pop(); // Remove the last element from consequentValues
+        let newLastValue = parseInt(lastValue.toString().slice(0, -1)); // Remove the last character from the string and convert back to integer
+        if (!isNaN(newLastValue)) {
+            consequentValues.push(newLastValue); // Push the modified value back to consequentValues
         }
-    } else if (consequentValues.length > 0) {
-        for (let i = 0; i < consequentValues.length; i++) {
-            // Convert the number to a string
-            let str = consequentValues[i].toString();
-            
-            // Remove the last character from the string
-            let newStr = str.slice(0, -1);
-            
-            // Convert the modified string back to a number
-            consequentValues[i] = parseInt(newStr);
+    } else if (antecedentValues.length > 0) {
+        let lastValue = antecedentValues.pop(); // Remove the last element from antecedentValues
+        let newLastValue = parseInt(lastValue.toString().slice(0, -1)); // Remove the last character from the string and convert back to integer
+        if (!isNaN(newLastValue)) {
+            antecedentValues.push(newLastValue); // Push the modified value back to antecedentValues
         }
     }
 });
+
