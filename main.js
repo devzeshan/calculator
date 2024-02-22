@@ -30,9 +30,10 @@ const antecedentValues = [];
 
 // Array for the consequent
 const consequentValues = [];
-// minor change again
 
 const buttons = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9];
+
+
 
 buttons.forEach((button, index) => {
     button.addEventListener("click", function() {
@@ -45,3 +46,15 @@ buttons.forEach((button, index) => {
         antecedentValues.splice(0, antecedentValues.length, parseInt(antecedentValues.join('')));
     });
 });
+
+
+buttonDecimal.addEventListener("click", function() {
+    if (displayContent.innerText.includes('.')) {
+        return;
+    } else if (displayContent.innerHTML != "") {
+        displayContent.innerHTML += ".";
+        antecedentValues.push(".");
+        antecedentValues.splice(0, antecedentValues.length, parseInt(antecedentValues.join('')));
+    }
+
+})
