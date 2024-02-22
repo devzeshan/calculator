@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css"/>
     <title>Zeshan's Calculator</title>
-    <script type="module" src="main.js"></script>
-</head>
+    </head>
 <body>
     <div class="content-container">
         <div class="heading">
@@ -24,38 +23,39 @@
         </div>            
         <div class="calculator">
             <div class="display">
-                <div class="content">0</div>
+                <div id="content"></div>
             </div>
             <div class="operational-content">
                 <div class="row">
-                    <button class="value">7</button>
-                    <button class="value">8</button>
-                    <button class="value">9</button>
-                    <button class="operator" id="addition">+</button>
-                    <button class="other" id="delete">DEL</button>
+                    <button id="value7">7</button>
+                    <button id="value8">8</button>
+                    <button id="value9">9</button>
+                    <button id="operator" id="addition">+</button>
+                    <button id="other" id="delete">DEL</button>
                 </div>
                 <div class="row">
-                    <button class="value">4</button>
-                    <button class="value">5</button>
-                    <button class="value">6</button>
-                    <button class="operator" id="subtraction">-</button>
-                    <button class="other" id="clear">CLR</button>
+                    <button id="value4">4</button>
+                    <button id="value5">5</button>
+                    <button id="value6">6</button>
+                    <button id="operator" id="subtraction">-</button>
+                    <button id="other" id="clear">CLR</button>
                 </div>
                 <div class="row">
-                    <button class="value">7</button>
-                    <button class="value">8</button>
-                    <button class="value">9</button>
+                    <button id="value1">1</button>
+                    <button id="value2">2</button>
+                    <button id="value3">3</button>
                     <button class="operator" id="multiplication">*</button>
                     <button class="other" id="equal">=</button>
 
                 </div>
                 <div class="row">
-                    <button class="value">0</button>
-                    <button class="value">.</button>
+                    <button id="value0">0</button>
+                    <button id="valueDecimal">.</button>
                     <button class="operator" id="division">/</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
